@@ -77,6 +77,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             try {
                 Class clazz = Settings.class;
                 Method canDrawOverlays = clazz.getDeclaredMethod("canDrawOverlays", Context.class);
+                Settings.canDrawOverlays(context);
                 result = (Boolean) canDrawOverlays.invoke(null, context);
             } catch (Exception e) {
                 Log.e(TAG, Log.getStackTraceString(e));
@@ -100,6 +101,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (Settings.canDrawOverlays(this)) {
                     Log.i(TAG, "onActivityResult granted");
+                    showFloat();
                 } else {
                     Log.i(TAG, "onActivityResult noGranted!");
                 }
